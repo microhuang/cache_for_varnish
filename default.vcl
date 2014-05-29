@@ -32,7 +32,8 @@ sub vcl_backend_response {
     #
     # Here you clean the response headers, removing silly Set-Cookie headers
     # and other mistakes your backend does.
-    set beresp.ttl = 7200s;
+    
+    set beresp.ttl = 7200s;        ##
 }
 
 sub vcl_deliver {
@@ -40,9 +41,12 @@ sub vcl_deliver {
     # response to the client.
     #
     # You can do accounting or modifying the final object here.
-    if (obj.hits > 0) {
-        set resp.http.X-Cache = "cached";
-    } else {
-        set resp.http.x-Cache = "uncached";
-    }
+    
+    ## X-Varnish: 32885
+    ## X-Varnish: 120 32886
+    #if (obj.hits > 0) {
+    #    set resp.http.X-Cache = "cached";
+    #} else {
+    #    set resp.http.x-Cache = "uncached";
+    #}
 }
