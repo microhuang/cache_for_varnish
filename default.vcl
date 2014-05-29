@@ -45,8 +45,8 @@ sub vcl_deliver {
     ## X-Varnish: 32885
     ## X-Varnish: 120 32886
     #if (obj.hits > 0) {
-    #    set resp.http.X-Cache = "cached";
+    #    set resp.http.X-Cache = "HIT";
     #} else {
-    #    set resp.http.x-Cache = "uncached";
+    #    set resp.http.x-Cache = "MISS";
     #}
 }
